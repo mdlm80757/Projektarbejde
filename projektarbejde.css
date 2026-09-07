@@ -41,6 +41,7 @@ body {
 .nav-links a {
     color: #fff;
     font-weight: 600;
+    text-decoration: none;
     padding: 0.5rem 0.75rem;
     border-radius: 6px;
     transition: background-color 0.2s ease;
