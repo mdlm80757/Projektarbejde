@@ -79,19 +79,13 @@ main {
 }
 
 .hero h1 {
-    max-width: 6100px;
+    max-width: 610px;
     margin: 0;
-    margin-left: 160px;
+    margin-left: 180px;
     font-size: 70px;
     line-height: 1;
 }
 
-.hero-content > p:not(.hero-eyebrow) {
-    max-width: 440px;
-    margin: 1.5rem 0 2rem;
-    font-size: 1.15rem;
-    line-height: 1.6;
-}
 
 .hero-button {
     display: inline-block;
