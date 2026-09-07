@@ -79,8 +79,9 @@ main {
 }
 
 .hero h1 {
-    max-width: 560px;
+    max-width: 580px;
     margin: 0;
+    margin-left: 80px;
     font-size: clamp(2.5rem, 6vw, 5rem);
     line-height: 1;
 }
