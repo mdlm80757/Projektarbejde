@@ -27,7 +27,7 @@ h3,
 
 h1 {
     max-width: 750px;
-    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-size: 80px;
     line-height: 1.05;
 }
 
