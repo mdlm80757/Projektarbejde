@@ -286,7 +286,7 @@ button {
 
 .filter-button {
     padding: 10px 16px;
-    color: #35453a;
+    color: #3e2c26;
     background-color: transparent;
     border: 1px solid #879087;
 }
@@ -294,7 +294,7 @@ button {
 .filter-button:hover,
 .filter-button.active {
     color: #ffffff;
-    background-color: #35453a;
+    background-color: #3e2c26;
 }
 
 .product-grid {
