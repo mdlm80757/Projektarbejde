@@ -353,12 +353,12 @@ button {
     width: 100%;
     padding: 12px;
     color: #ffffff;
-    background-color: #35453a;
+    background-color: #3e2c26;
     border: none;
 }
 
 .add-to-cart-button:hover {
-    background-color: #526356;
+    background-color: #3f2f2a;
 }
 
 .add-to-cart-button:disabled {
@@ -524,7 +524,7 @@ button {
 footer {
     padding: 25px 5%;
     color: #ffffff;
-    background-color: #29362d;
+    background-color: #3e2c26;
     text-align: center;
 }
 
