@@ -127,7 +127,10 @@ button {
 .primary-button {
     color: #504139;
     background-color: #f2eee1;
-    width: 220  px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 220px;
     height: 68px;
     font-size: 14px;
     font-weight: 700;
