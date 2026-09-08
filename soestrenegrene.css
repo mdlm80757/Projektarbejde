@@ -192,22 +192,6 @@ button {
     text-transform: uppercase;
 }
 
-
-/* INTRODUKTION */
-
-.intro-section {
-    max-width: 800px;
-    margin: auto;
-    padding: 120px 5%;
-    text-align: center;
-}
-
-.intro-section > p:last-child {
-    max-width: 650px;
-    margin: auto;
-}
-
-
 /* POPULÆRE KATEGORIER */
 
 .popular-categories-section {
