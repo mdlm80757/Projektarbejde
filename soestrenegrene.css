@@ -97,6 +97,10 @@ button {
     color: #7d4e3d;
 }
 
+.nav-links a {
+    text-transform: uppercase;
+}
+
 .cart-button,
 .menu-button {
     padding: 9px 14px;
