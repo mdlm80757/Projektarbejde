@@ -145,6 +145,7 @@ button {
 .hero {
     display: flex;
     align-items: center;
+    justify-content: center;
     min-height: 78vh;
     padding: 80px 5%;
     background:
@@ -160,6 +161,7 @@ button {
 .hero-content {
     max-width: 750px;
     color: #ffffff;
+    text-align: center;
 }
 
 .hero-content .eyebrow {
@@ -168,7 +170,7 @@ button {
 
 .hero-content p:not(.eyebrow) {
     max-width: 580px;
-    margin: 25px 0 35px;
+    margin: 25px auto 35px;
     font-size: 1.1rem;
 }
 
