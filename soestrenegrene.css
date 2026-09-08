@@ -145,6 +145,7 @@ button {
 .hero {
     display: flex;
     align-items: center;
+    justify-content: center;
     min-height: 78vh;
     padding: 80px 5%;
     background:
@@ -160,6 +161,7 @@ button {
 .hero-content {
     max-width: 750px;
     color: #ffffff;
+    text-align: center;
 }
 
 .hero-content .eyebrow {
@@ -168,7 +170,7 @@ button {
 
 .hero-content p:not(.eyebrow) {
     max-width: 580px;
-    margin: 25px 0 35px;
+    margin: 25px auto 35px;
     font-size: 1.1rem;
 }
 
@@ -185,6 +187,75 @@ button {
 .intro-section > p:last-child {
     max-width: 650px;
     margin: auto;
+}
+
+
+/* POPULÆRE KATEGORIER */
+
+.popular-categories-section {
+    padding: 100px 5%;
+    background-color: #f8f5ee;
+    text-align: center;
+}
+
+.popular-categories-section h2 {
+    margin-bottom: 45px;
+    text-transform: uppercase;
+}
+
+.popular-categories {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    max-width: 900px;
+    margin: auto;
+    gap: 30px;
+}
+
+.popular-category-button {
+    padding: 0;
+    color: #514940;
+    background: none;
+    border: none;
+}
+
+.popular-category-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 105px;
+    height: 105px;
+    margin: 0 auto 15px;
+    background-color: #efebe3;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    font-size: 2.6rem;
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.popular-category-name {
+    display: block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.popular-category-button:hover .popular-category-icon {
+    transform: translateY(-5px);
+    background-color: #e4dfd5;
+    border-color: #68756a;
+}
+
+.popular-category-button.active .popular-category-icon {
+    background-color: #d8ded8;
+    border-color: #68756a;
+}
+
+.selected-category-message {
+    min-height: 25px;
+    margin-top: 30px;
+    color: #68756a;
 }
 
 
@@ -237,6 +308,7 @@ button {
 }
 
 .product-image {
+    display: block;
     width: 100%;
     height: 330px;
     object-fit: cover;
@@ -327,8 +399,8 @@ button {
 
 .newsletter-section {
     padding: 100px 5%;
-    background-color: #647366;
     color: #ffffff;
+    background-color: #647366;
 }
 
 .newsletter-content {
@@ -409,6 +481,7 @@ button {
 .cart-item {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
     padding: 15px 0;
     border-bottom: 1px solid #d5d1c8;
 }
@@ -453,7 +526,18 @@ footer {
 }
 
 
-/* MOBIL */
+/* TABLET */
+
+@media (max-width: 900px) {
+    .popular-categories {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 550px;
+        row-gap: 40px;
+    }
+}
+
+
+/* MOBIL OG MINDRE TABLET */
 
 @media (max-width: 850px) {
     .menu-button {
@@ -490,6 +574,16 @@ footer {
 @media (max-width: 560px) {
     .hero {
         min-height: 650px;
+    }
+
+    .popular-categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .popular-category-icon {
+        width: 90px;
+        height: 90px;
+        font-size: 2.2rem;
     }
 
     .product-grid {

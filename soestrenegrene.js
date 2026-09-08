@@ -1,37 +1,27 @@
-console.log("JavaScript-filen er forbundet");
-
 "use strict";
 
+console.log("JavaScript-filen er forbundet");
+
+
 /*
-    ==========================================
-    1. VARIABLER, DATATYPER, ARRAYS OG OBJEKTER
-    ==========================================
+    1. VARIABLER OG DATATYPER
 */
 
+// Primitive datatyper
+const shopName = "Søstrene Grene"; // String
+const freeShippingLimit = 500;     // Number
+const shopIsOpen = true;           // Boolean
+const currentDiscount = null;      // Null
 
-// PRIMITIVE DATATYPER
-
-// String: En tekstværdi
-const shopName = "Søstrene Grene";
-
-// Number: En talværdi
-const freeShippingLimit = 500;
-
-// Boolean: Enten true eller false
-const shopIsOpen = true;
-
-// Null: Værdien er bevidst tom
-const currentDiscount = null;
-
-// Undefined: Variablen har endnu ikke fået en værdi
+// Undefined, indtil brugeren vælger et produkt
 let selectedProduct;
 
 
 /*
-    IKKE-PRIMITIVE DATATYPER
+    2. ARRAYS OG OBJEKTER
 
     products er et array.
-    Hvert produkt inde i arrayet er et objekt.
+    Hvert produkt i arrayet er et objekt.
 */
 
 const products = [
@@ -87,57 +77,120 @@ const products = [
 
 
 /*
-    cart er et array, der begynder tomt.
-    Produkter bliver tilføjet til arrayet senere.
+    Kategorierne er også et array med objekter.
 */
 
+const popularCategories = [
+    {
+        name: "Bolig",
+        icon: "🛋️",
+        productFilter: "bolig"
+    },
+    {
+        name: "Interiør",
+        icon: "🏺",
+        productFilter: "bolig"
+    },
+    {
+        name: "Møbler",
+        icon: "🪑",
+        productFilter: "bolig"
+    },
+    {
+        name: "Køkkenudstyr",
+        icon: "🍽️",
+        productFilter: "koekken"
+    },
+    {
+        name: "Gaver",
+        icon: "🎁",
+        productFilter: "kreativitet"
+    },
+    {
+        name: "Julegaver",
+        icon: "🎄",
+        productFilter: "kreativitet"
+    }
+];
+
+
+// Kurven er et tomt array ved sidens start
 const cart = [];
 
-
-/*
-    let bruges, fordi værdien kan ændre sig.
-    Brugeren kan vælge en anden kategori.
-*/
-
+// let bruges, fordi kategorien ændrer sig
 let selectedCategory = "alle";
 
 
 /*
-    ==========================================
-    2. DOM
-    ==========================================
+    3. DOM
 
-    DOM gør det muligt for JavaScript at finde
-    og ændre elementer i HTML-dokumentet.
+    JavaScript finder elementerne fra HTML.
 */
 
-const productContainer = document.querySelector("#product-container");
-const cartCount = document.querySelector("#cart-count");
-const cartTotal = document.querySelector("#cart-total");
-const cartItems = document.querySelector("#cart-items");
-const cartPanel = document.querySelector("#cart-panel");
-const cartButton = document.querySelector("#cart-button");
-const closeCartButton = document.querySelector("#close-cart-button");
-const clearCartButton = document.querySelector("#clear-cart-button");
-const filterButtons = document.querySelectorAll(".filter-button");
-const menuButton = document.querySelector("#menu-button");
-const navLinks = document.querySelector("#nav-links");
-const readMoreButton = document.querySelector("#read-more-button");
-const extraText = document.querySelector("#extra-text");
-const newsletterForm = document.querySelector("#newsletter-form");
-const emailInput = document.querySelector("#email");
-const formMessage = document.querySelector("#form-message");
-const notification = document.querySelector("#notification");
+const productContainer =
+    document.querySelector("#product-container");
+
+const cartCount =
+    document.querySelector("#cart-count");
+
+const cartTotal =
+    document.querySelector("#cart-total");
+
+const cartItems =
+    document.querySelector("#cart-items");
+
+const cartPanel =
+    document.querySelector("#cart-panel");
+
+const cartButton =
+    document.querySelector("#cart-button");
+
+const closeCartButton =
+    document.querySelector("#close-cart-button");
+
+const clearCartButton =
+    document.querySelector("#clear-cart-button");
+
+const filterButtons =
+    document.querySelectorAll(".filter-button");
+
+const menuButton =
+    document.querySelector("#menu-button");
+
+const navLinks =
+    document.querySelector("#nav-links");
+
+const readMoreButton =
+    document.querySelector("#read-more-button");
+
+const extraText =
+    document.querySelector("#extra-text");
+
+const newsletterForm =
+    document.querySelector("#newsletter-form");
+
+const emailInput =
+    document.querySelector("#email");
+
+const formMessage =
+    document.querySelector("#form-message");
+
+const notification =
+    document.querySelector("#notification");
+
+const popularCategoriesContainer =
+    document.querySelector("#popular-categories");
+
+const selectedCategoryMessage =
+    document.querySelector("#selected-category-message");
 
 
 /*
-    ==========================================
-    3. FUNCTIONS, LOOP OG KONTROLSTRUKTUR
-    ==========================================
+    4. FUNCTIONS
 */
 
 
-// Funktionen modtager en pris og returnerer den i dansk format
+// Formaterer en pris som et dansk beløb
 function formatPrice(price) {
     return price.toLocaleString("da-DK", {
         minimumFractionDigits: 2,
@@ -146,13 +199,8 @@ function formatPrice(price) {
 }
 
 
-// Funktionen gør kategorinavnet pænere
+// Gør kategoriernes navne pænere
 function formatCategory(category) {
-    /*
-        Kontrolstruktur med if og else.
-        Comparison-operatoren === sammenligner værdier.
-    */
-
     if (category === "koekken") {
         return "Køkken";
     } else if (category === "kreativitet") {
@@ -163,51 +211,158 @@ function formatCategory(category) {
 }
 
 
-// Funktionen viser produkterne på hjemmesiden
+// Opretter de seks populære kategorier
+function showPopularCategories() {
+    popularCategoriesContainer.innerHTML = "";
+
+    /*
+        for...of er et loop.
+        Loopet gennemgår alle kategoriobjekterne.
+    */
+
+    for (const category of popularCategories) {
+        const categoryButton =
+            document.createElement("button");
+
+        categoryButton.type = "button";
+
+        categoryButton.classList.add(
+            "popular-category-button"
+        );
+
+        categoryButton.dataset.categoryName =
+            category.name;
+
+        categoryButton.dataset.productFilter =
+            category.productFilter;
+
+        categoryButton.innerHTML = `
+            <span class="popular-category-icon">
+                ${category.icon}
+            </span>
+
+            <span class="popular-category-name">
+                ${category.name}
+            </span>
+        `;
+
+        popularCategoriesContainer.appendChild(
+            categoryButton
+        );
+    }
+
+    addPopularCategoryEvents();
+}
+
+
+// Tilføjer klik-events til de populære kategorier
+function addPopularCategoryEvents() {
+    const categoryButtons =
+        document.querySelectorAll(
+            ".popular-category-button"
+        );
+
+    categoryButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const categoryName =
+                button.dataset.categoryName;
+
+            const productFilter =
+                button.dataset.productFilter;
+
+            categoryButtons.forEach(
+                function (categoryButton) {
+                    categoryButton.classList.remove(
+                        "active"
+                    );
+                }
+            );
+
+            button.classList.add("active");
+
+            selectedCategoryMessage.textContent =
+                "De har valgt kategorien: " +
+                categoryName;
+
+            selectedCategory = productFilter;
+
+            showProducts(selectedCategory);
+            markMatchingFilter(selectedCategory);
+
+            document
+                .querySelector("#produkter")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+        });
+    });
+}
+
+
+// Markerer den filterknap, der svarer til kategorien
+function markMatchingFilter(category) {
+    filterButtons.forEach(function (button) {
+        button.classList.remove("active");
+
+        if (button.dataset.category === category) {
+            button.classList.add("active");
+        }
+    });
+}
+
+
+// Viser og filtrerer produkterne
 function showProducts(category) {
     productContainer.innerHTML = "";
 
     let visibleProducts;
 
     /*
-        Logic-operatoren || betyder "eller".
-        Hvis kategorien er "alle", viser vi hele arrayet.
+        || betyder "eller".
     */
 
     if (category === "alle" || category === "") {
         visibleProducts = products;
     } else {
-        /*
-            filter gennemgår arrayet og vælger kun
-            produkter med den rigtige kategori.
-        */
-
-        visibleProducts = products.filter(function (product) {
-            return product.category === category;
-        });
+        visibleProducts = products.filter(
+            function (product) {
+                return product.category === category;
+            }
+        );
     }
 
     /*
-        Et for...of-loop gennemgår alle produkterne.
-        Der oprettes ét produktkort for hvert produkt.
+        Kontrolstruktur:
+
+        Hvis listen er tom, vises en besked.
+        Ellers oprettes produktkortene.
+    */
+
+    if (visibleProducts.length === 0) {
+        productContainer.innerHTML =
+            "<p>Der blev ikke fundet nogen produkter.</p>";
+
+        return;
+    }
+
+    /*
+        Loopet opretter ét kort for hvert produkt.
     */
 
     for (const product of visibleProducts) {
-        const productCard = document.createElement("article");
+        const productCard =
+            document.createElement("article");
+
         productCard.classList.add("product-card");
-
-        /*
-            Kontrolstruktur og comparison.
-
-            Hvis inStock er lig med false,
-            bliver knappen deaktiveret.
-        */
 
         let stockText = "";
         let disabledText = "";
 
         if (product.inStock === false) {
-            stockText = '<p class="stock-message">Midlertidigt udsolgt</p>';
+            stockText =
+                '<p class="stock-message">' +
+                'Midlertidigt udsolgt</p>';
+
             disabledText = "disabled";
         }
 
@@ -234,9 +389,14 @@ function showProducts(category) {
                 <button
                     class="add-to-cart-button"
                     data-product-id="${product.id}"
+                    type="button"
                     ${disabledText}
                 >
-                    ${product.inStock ? "Læg i kurv" : "Udsolgt"}
+                    ${
+                        product.inStock
+                            ? "Læg i kurv"
+                            : "Udsolgt"
+                    }
                 </button>
             </div>
         `;
@@ -248,20 +408,17 @@ function showProducts(category) {
 }
 
 
-// Funktionen tilføjer events til alle produktknapper
+// Tilføjer events til produktknapperne
 function addProductButtonEvents() {
-    const productButtons = document.querySelectorAll(
-        ".add-to-cart-button"
-    );
-
-    /*
-        forEach er også en form for loop.
-        Det gennemgår alle knapperne.
-    */
+    const productButtons =
+        document.querySelectorAll(
+            ".add-to-cart-button"
+        );
 
     productButtons.forEach(function (button) {
         button.addEventListener("click", function () {
-            const productId = Number(button.dataset.productId);
+            const productId =
+                Number(button.dataset.productId);
 
             addToCart(productId);
         });
@@ -269,76 +426,81 @@ function addProductButtonEvents() {
 }
 
 
-// Funktionen finder et produkt og lægger det i kurven
+// Lægger et produkt i kurven
 function addToCart(productId) {
-    selectedProduct = products.find(function (product) {
-        return product.id === productId;
-    });
+    selectedProduct = products.find(
+        function (product) {
+            return product.id === productId;
+        }
+    );
 
     /*
-        Logic-operatoren && betyder "og".
+        && betyder "og".
 
-        Produktet bliver kun tilføjet, hvis det både
-        findes og er på lager.
+        Produktet skal både eksistere og være på lager.
     */
 
-    if (selectedProduct && selectedProduct.inStock === true) {
+    if (
+        selectedProduct &&
+        selectedProduct.inStock === true
+    ) {
         cart.push(selectedProduct);
 
         updateCart();
-        showNotification(selectedProduct.name + " er lagt i kurven");
+
+        showNotification(
+            selectedProduct.name +
+            " er lagt i kurven"
+        );
     }
 }
 
 
-// Funktionen fjerner en vare fra kurven
+// Fjerner ét produkt fra kurven
 function removeFromCart(index) {
     cart.splice(index, 1);
     updateCart();
 }
 
 
-// Funktionen opdaterer kurvens indhold
+// Opdaterer kurven og beregner samlet pris
 function updateCart() {
     cartItems.innerHTML = "";
 
     /*
-        Assignment-operator:
-        = tildeler variablen en værdi.
-
-        Variablen er lokal, fordi den kun findes
-        inde i funktionen updateCart.
+        totalPrice har local scope.
+        += bruges til at lægge priser sammen.
     */
 
     let totalPrice = 0;
 
-    /*
-        Kontrolstruktur:
-        Hvis arrayets længde er 0, er kurven tom.
-    */
-
     if (cart.length === 0) {
-        cartItems.innerHTML = "<p>Deres kurv er tom.</p>";
+        cartItems.innerHTML =
+            "<p>Deres kurv er tom.</p>";
     } else {
         /*
-            Et almindeligt for-loop.
-
-            let index starter på 0.
-            Loopet fortsætter, mens index er mindre
-            end antallet af varer.
+            Almindeligt for-loop.
             index++ lægger 1 til index.
         */
 
-        for (let index = 0; index < cart.length; index++) {
+        for (
+            let index = 0;
+            index < cart.length;
+            index++
+        ) {
             const product = cart[index];
 
-            const cartItem = document.createElement("div");
+            const cartItem =
+                document.createElement("div");
+
             cartItem.classList.add("cart-item");
 
             cartItem.innerHTML = `
                 <div>
                     <strong>${product.name}</strong>
-                    <p>${formatPrice(product.price)} kr.</p>
+                    <p>
+                        ${formatPrice(product.price)} kr.
+                    </p>
                 </div>
 
                 <button
@@ -352,24 +514,25 @@ function updateCart() {
 
             cartItems.appendChild(cartItem);
 
-            /*
-                Arithmetic-operatoren + lægger priser sammen.
-                Assignment-operatoren += gemmer det nye resultat.
-            */
-
             totalPrice += product.price;
         }
     }
 
-    // DOM ændrer teksten på hjemmesiden
     cartCount.textContent = cart.length;
-    cartTotal.textContent = formatPrice(totalPrice);
 
-    const removeButtons = document.querySelectorAll(".remove-button");
+    cartTotal.textContent =
+        formatPrice(totalPrice);
+
+    const removeButtons =
+        document.querySelectorAll(
+            ".remove-button"
+        );
 
     removeButtons.forEach(function (button) {
         button.addEventListener("click", function () {
-            const index = Number(button.dataset.cartIndex);
+            const index =
+                Number(button.dataset.cartIndex);
+
             removeFromCart(index);
         });
     });
@@ -377,32 +540,32 @@ function updateCart() {
     /*
         Comparison og logic.
 
-        Hvis prisen er større end eller lig med
-        fragtgrænsen, og kurven ikke er tom,
-        vises en besked.
+        >= betyder større end eller lig med.
+        && betyder "og".
     */
 
-    if (totalPrice >= freeShippingLimit && cart.length > 0) {
-        showNotification("De har opnået gratis fragt");
+    if (
+        totalPrice >= freeShippingLimit &&
+        cart.length > 0
+    ) {
+        showNotification(
+            "De har opnået gratis fragt"
+        );
     }
 }
 
 
-// Funktionen tømmer hele kurven
+// Tømmer hele kurven
 function clearCart() {
-    /*
-        Arrayets længde sættes til 0.
-        Det fjerner alle elementerne i arrayet.
-    */
-
     cart.length = 0;
     updateCart();
 }
 
 
-// Funktionen viser en kort besked
+// Viser en kort besked på skærmen
 function showNotification(message) {
     notification.textContent = message;
+
     notification.classList.remove("hidden");
 
     setTimeout(function () {
@@ -412,143 +575,137 @@ function showNotification(message) {
 
 
 /*
-    ==========================================
-    4. EVENTS
-    ==========================================
+    5. EVENTS
 */
 
 
-// Event: Brugeren klikker på en kategoriknap
+// Filtreringsknapper ved produkterne
 filterButtons.forEach(function (button) {
     button.addEventListener("click", function () {
-        selectedCategory = button.dataset.category;
+        selectedCategory =
+            button.dataset.category;
 
-        filterButtons.forEach(function (filterButton) {
-            filterButton.classList.remove("active");
-        });
+        filterButtons.forEach(
+            function (filterButton) {
+                filterButton.classList.remove(
+                    "active"
+                );
+            }
+        );
 
         button.classList.add("active");
 
         showProducts(selectedCategory);
+
+        selectedCategoryMessage.textContent = "";
     });
 });
 
 
-// Event: Brugeren åbner kurven
+// Åbn kurven
 cartButton.addEventListener("click", function () {
     cartPanel.classList.remove("hidden");
 });
 
 
-// Event: Brugeren lukker kurven
-closeCartButton.addEventListener("click", function () {
-    cartPanel.classList.add("hidden");
-});
+// Luk kurven
+closeCartButton.addEventListener(
+    "click",
+    function () {
+        cartPanel.classList.add("hidden");
+    }
+);
 
 
-// Event: Brugeren tømmer kurven
-clearCartButton.addEventListener("click", function () {
-    clearCart();
-});
+// Tøm kurven
+clearCartButton.addEventListener(
+    "click",
+    function () {
+        clearCart();
+    }
+);
 
 
-// Event: Brugeren åbner eller lukker mobilmenuen
+// Åbn og luk mobilmenuen
 menuButton.addEventListener("click", function () {
     navLinks.classList.toggle("menu-open");
 });
 
 
-// Event: Brugeren trykker på "Læs mere"
-readMoreButton.addEventListener("click", function () {
-    extraText.classList.toggle("hidden");
+// Vis og skjul den ekstra tekst
+readMoreButton.addEventListener(
+    "click",
+    function () {
+        extraText.classList.toggle("hidden");
 
-    if (extraText.classList.contains("hidden")) {
-        readMoreButton.textContent = "Læs mere";
-    } else {
-        readMoreButton.textContent = "Vis mindre";
+        if (
+            extraText.classList.contains("hidden")
+        ) {
+            readMoreButton.textContent = "Læs mere";
+        } else {
+            readMoreButton.textContent = "Vis mindre";
+        }
     }
-});
+);
 
 
-// Event: Brugeren indsender nyhedsbrevsformularen
-newsletterForm.addEventListener("submit", function (event) {
-    /*
-        preventDefault forhindrer siden i at genindlæse,
-        når formularen indsendes.
-    */
+// Nyhedsbrevsformular
+newsletterForm.addEventListener(
+    "submit",
+    function (event) {
+        event.preventDefault();
 
-    event.preventDefault();
+        const email = emailInput.value.trim();
 
-    const email = emailInput.value.trim();
+        if (
+            email !== "" &&
+            email.includes("@")
+        ) {
+            formMessage.textContent =
+                "Tak for Deres tilmelding til " +
+                shopName +
+                ".";
 
-    /*
-        Logic-operatoren && betyder "og".
-        Begge betingelser skal være opfyldt.
-    */
-
-    if (email !== "" && email.includes("@")) {
-        formMessage.textContent =
-            "Tak for Deres tilmelding til " + shopName + ".";
-
-        emailInput.value = "";
-    } else {
-        formMessage.textContent =
-            "Skriv venligst en gyldig e-mailadresse.";
+            emailInput.value = "";
+        } else {
+            formMessage.textContent =
+                "Skriv venligst en gyldig e-mailadresse.";
+        }
     }
-});
+);
 
 
 /*
-    ==========================================
-    5. VARIABLE SCOPE
-    ==========================================
+    6. VARIABLE SCOPE
 */
 
-
-// Global scope: Kan bruges i hele JavaScript-filen
-const globalMessage = "Velkommen til vores hjemmeside";
+// Global scope: Kan bruges i hele filen
+const globalMessage =
+    "Velkommen til vores hjemmeside";
 
 
 function demonstrateLocalScope() {
-    /*
-        Local scope:
-        localMessage kan kun bruges inde i denne funktion.
-    */
-
-    const localMessage = "Denne tekst findes kun inde i funktionen";
+    // Local scope: Kan kun bruges i funktionen
+    const localMessage =
+        "Denne tekst findes kun inde i funktionen";
 
     console.log(globalMessage);
     console.log(localMessage);
 }
 
 
-// Funktionen kaldes
 demonstrateLocalScope();
 
 
 /*
-    localMessage kan ikke bruges herude.
-    Hvis vi skrev console.log(localMessage),
-    ville JavaScript give en fejl.
+    7. PROGRAMMET STARTER
 */
-
-
-/*
-    ==========================================
-    6. PROGRAMMET STARTES
-    ==========================================
-*/
-
 
 console.log("Butikken hedder:", shopName);
 console.log("Er butikken åben?", shopIsOpen);
 console.log("Aktuel rabat:", currentDiscount);
 console.log("Alle produkter:", products);
 
-
-// Vis alle produkter, når siden indlæses
+showPopularCategories();
 showProducts("alle");
-
-
-// Vis den tomme kurv ved sidens start
 updateCart();
