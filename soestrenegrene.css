@@ -128,6 +128,7 @@ button {
     color: #504139;
     background-color: #f2eee1;
     font-size: 12px;
+    font-weight: 700;
 }
 
 .primary-button:hover {
