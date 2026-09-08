@@ -12,7 +12,7 @@ html {
 
 body {
     background-color: #f6f3ed;
-    color: #2f3a32;
+    color: #504139;
     font-family: "Brandon Grotesesque", sans-serif;
     line-height: 1.6;
 }
@@ -165,7 +165,7 @@ button {
     background:
         linear-gradient(
             90deg,
-            rgba(34, 49, 38, 0.78),
+            #504139,
             rgba(34, 49, 38, 0.18)
         ),
         url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1800&q=85")
