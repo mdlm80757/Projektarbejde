@@ -598,10 +598,11 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .popular-category-icon {
-        width: 90px;
-        height: 90px;
-        font-size: 2.2rem;
+.popular-category-icon img {
+    width: 78%;
+    height: 78%;
+    object-fit: contain;
+        font-size: 2.6rem;
     }
 
     .product-grid {
