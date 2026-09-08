@@ -127,6 +127,7 @@ button {
 .primary-button {
     color: #504139;
     background-color: #f2eee1;
+    font-size: 12px;
 }
 
 .primary-button:hover {
