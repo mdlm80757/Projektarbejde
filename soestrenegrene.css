@@ -178,6 +178,11 @@ button {
     font-size: 1.1rem;
 }
 
+.hero .primary-button {
+    font-family: "Brandon Grotesque", sans-serif;
+    text-transform: uppercase;
+}
+
 
 /* INTRODUKTION */
 
