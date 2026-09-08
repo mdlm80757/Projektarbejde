@@ -12,7 +12,7 @@
 
 <body>
 
-    <!-- HEADER OG NAVIGATION -->
+    <!-- HEADER -->
     <header class="site-header">
         <nav class="navbar">
             <a href="#" class="logo">Søstrene Grene</a>
@@ -25,6 +25,7 @@
                 <li><a href="#produkter">Produkter</a></li>
                 <li><a href="#inspiration">Inspiration</a></li>
                 <li><a href="#om-os">Om os</a></li>
+
                 <li>
                     <button id="cart-button" class="cart-button" type="button">
                         Kurv (<span id="cart-count">0</span>)
@@ -66,6 +67,23 @@
             </p>
         </section>
 
+        <!-- POPULÆRE KATEGORIER -->
+        <section class="popular-categories-section">
+            <p class="eyebrow">Gå på opdagelse</p>
+            <h2>Populære kategorier</h2>
+
+            <!-- Kategorierne indsættes med JavaScript -->
+            <div
+                id="popular-categories"
+                class="popular-categories"
+            ></div>
+
+            <p
+                id="selected-category-message"
+                class="selected-category-message"
+            ></p>
+        </section>
+
         <!-- PRODUKTER -->
         <section id="produkter" class="product-section">
             <div class="section-heading">
@@ -74,31 +92,46 @@
                     <h2>Populære produkter</h2>
                 </div>
 
-                <!-- Kategorifilter -->
                 <div class="filter-buttons">
-                    <button class="filter-button active" data-category="alle">
+                    <button
+                        class="filter-button active"
+                        data-category="alle"
+                        type="button"
+                    >
                         Alle
                     </button>
 
-                    <button class="filter-button" data-category="bolig">
+                    <button
+                        class="filter-button"
+                        data-category="bolig"
+                        type="button"
+                    >
                         Bolig
                     </button>
 
-                    <button class="filter-button" data-category="koekken">
+                    <button
+                        class="filter-button"
+                        data-category="koekken"
+                        type="button"
+                    >
                         Køkken
                     </button>
 
-                    <button class="filter-button" data-category="kreativitet">
+                    <button
+                        class="filter-button"
+                        data-category="kreativitet"
+                        type="button"
+                    >
                         Kreativitet
                     </button>
                 </div>
             </div>
 
-            <!-- JavaScript indsætter produktkort her -->
+            <!-- Produkterne indsættes med JavaScript -->
             <div id="product-container" class="product-grid"></div>
         </section>
 
-        <!-- INFORMATION -->
+        <!-- OM OS -->
         <section id="om-os" class="about-section">
             <div class="about-content">
                 <p class="eyebrow">Om Søstrene Grene</p>
@@ -111,14 +144,18 @@
                     forandrer sig løbende, så der altid er noget nyt at opdage.
                 </p>
 
-                <button id="read-more-button" class="secondary-button" type="button">
+                <button
+                    id="read-more-button"
+                    class="secondary-button"
+                    type="button"
+                >
                     Læs mere
                 </button>
 
                 <p id="extra-text" class="extra-text hidden">
                     Dette er en studieside, der er udviklet som et
-                    undervisningsprojekt. Siden demonstrerer forskellige
-                    grundlæggende funktioner i JavaScript.
+                    undervisningsprojekt. Siden demonstrerer grundlæggende
+                    funktioner i JavaScript.
                 </p>
             </div>
         </section>
@@ -157,27 +194,36 @@
         <div class="cart-heading">
             <h2>Deres kurv</h2>
 
-            <button id="close-cart-button" type="button" aria-label="Luk kurven">
+            <button
+                id="close-cart-button"
+                type="button"
+                aria-label="Luk kurven"
+            >
                 ×
             </button>
         </div>
 
-        <!-- JavaScript indsætter kurvens varer her -->
         <div id="cart-items"></div>
 
         <div class="cart-total">
             <p>
                 Samlet pris:
-                <strong><span id="cart-total">0,00</span> kr.</strong>
+                <strong>
+                    <span id="cart-total">0,00</span> kr.
+                </strong>
             </p>
         </div>
 
-        <button id="clear-cart-button" class="secondary-button" type="button">
+        <button
+            id="clear-cart-button"
+            class="secondary-button"
+            type="button"
+        >
             Tøm kurven
         </button>
     </aside>
 
-    <!-- Besked når en vare tilføjes -->
+    <!-- LILLE BESKED -->
     <div id="notification" class="notification hidden"></div>
 
     <footer>
