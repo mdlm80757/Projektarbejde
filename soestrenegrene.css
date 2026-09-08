@@ -128,6 +128,15 @@ button {
 .primary-button {
     color: #504139;
     background-color: #f2eee1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 228px;
+    height: 62px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
 }
 
 .primary-button:hover {
@@ -177,6 +186,11 @@ button {
     max-width: 580px;
     margin: 25px auto 35px;
     font-size: 1.1rem;
+}
+
+.hero .primary-button {
+    font-family: "Brandon Grotesque", sans-serif;
+    text-transform: uppercase;
 }
 
 
@@ -585,10 +599,11 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .popular-category-icon {
-        width: 90px;
-        height: 90px;
-        font-size: 2.2rem;
+.popular-category-icon img {
+    width: 78%;
+    height: 78%;
+    object-fit: contain;
+        font-size: 2.6rem;
     }
 
     .product-grid {

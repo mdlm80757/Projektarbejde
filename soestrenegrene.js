@@ -83,32 +83,32 @@ const products = [
 const popularCategories = [
     {
         name: "Bolig",
-        icon: "🛋️",
+        icon: "kategori-ikoner/bolig.svg",
         productFilter: "bolig"
     },
     {
         name: "Interiør",
-        icon: "🏺",
+        icon: "kategori-ikoner/interioer.svg",
         productFilter: "bolig"
     },
     {
         name: "Møbler",
-        icon: "🪑",
+        icon: "kategori-ikoner/moebler.svg",
         productFilter: "bolig"
     },
     {
         name: "Køkkenudstyr",
-        icon: "🍽️",
+        icon: "kategori-ikoner/koekkenudstyr.svg",
         productFilter: "koekken"
     },
     {
         name: "Gaver",
-        icon: "🎁",
+        icon: "kategori-ikoner/gaver.svg",
         productFilter: "kreativitet"
     },
     {
         name: "Julegaver",
-        icon: "🎄",
+        icon: "kategori-ikoner/julegaver.svg",
         productFilter: "kreativitet"
     }
 ];
@@ -236,15 +236,18 @@ function showPopularCategories() {
         categoryButton.dataset.productFilter =
             category.productFilter;
 
-        categoryButton.innerHTML = `
-            <span class="popular-category-icon">
-                ${category.icon}
-            </span>
+categoryButton.innerHTML = `
+    <span class="popular-category-icon">
+        <img
+            src="${category.icon}"
+            alt=""
+        >
+    </span>
 
-            <span class="popular-category-name">
-                ${category.name}
-            </span>
-        `;
+    <span class="popular-category-name">
+        ${category.name}
+    </span>
+`;
 
         popularCategoriesContainer.appendChild(
             categoryButton
