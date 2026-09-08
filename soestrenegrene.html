@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Søstrene Grene – Projektarbejde</title>
+
+    <link rel="stylesheet" href="soestrenegrene.css">
+    <script src="soestrenegrene.js" defer></script>
+</head>
+
+<body>
+
+    <!-- HEADER OG NAVIGATION -->
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="#" class="logo">Søstrene Grene</a>
+
+            <button id="menu-button" class="menu-button" type="button">
+                Menu
+            </button>
+
+            <ul id="nav-links" class="nav-links">
+                <li><a href="#produkter">Produkter</a></li>
+                <li><a href="#inspiration">Inspiration</a></li>
+                <li><a href="#om-os">Om os</a></li>
+                <li>
+                    <button id="cart-button" class="cart-button" type="button">
+                        Kurv (<span id="cart-count">0</span>)
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-content">
+                <p class="eyebrow">Efterårets nyheder</p>
+
+                <h1>Find ro i hverdagens små øjeblikke</h1>
+
+                <p>
+                    Gå på opdagelse i et univers af boligtilbehør,
+                    kreativitet og hyggelige detaljer.
+                </p>
+
+                <a class="primary-button" href="#produkter">
+                    Udforsk kollektionen
+                </a>
+            </div>
+        </section>
+
+        <!-- INTRODUKTION -->
+        <section id="inspiration" class="intro-section">
+            <p class="eyebrow">Inspiration til hjemmet</p>
+
+            <h2>Små forandringer, stor glæde</h2>
+
+            <p>
+                Lad Dem inspirere af naturlige materialer, rolige farver
+                og produkter, som skaber en hyggelig stemning i hjemmet.
+            </p>
+        </section>
+
+        <!-- PRODUKTER -->
+        <section id="produkter" class="product-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Udvalgte varer</p>
+                    <h2>Populære produkter</h2>
+                </div>
+
+                <!-- Kategorifilter -->
+                <div class="filter-buttons">
+                    <button class="filter-button active" data-category="alle">
+                        Alle
+                    </button>
+
+                    <button class="filter-button" data-category="bolig">
+                        Bolig
+                    </button>
+
+                    <button class="filter-button" data-category="koekken">
+                        Køkken
+                    </button>
+
+                    <button class="filter-button" data-category="kreativitet">
+                        Kreativitet
+                    </button>
+                </div>
+            </div>
+
+            <!-- JavaScript indsætter produktkort her -->
+            <div id="product-container" class="product-grid"></div>
+        </section>
+
+        <!-- INFORMATION -->
+        <section id="om-os" class="about-section">
+            <div class="about-content">
+                <p class="eyebrow">Om Søstrene Grene</p>
+
+                <h2>En verden af æstetik og kreativitet</h2>
+
+                <p>
+                    Hos Søstrene Grene findes inspiration til hjemmet,
+                    kreative projekter og hyggelige stunder. Sortimentet
+                    forandrer sig løbende, så der altid er noget nyt at opdage.
+                </p>
+
+                <button id="read-more-button" class="secondary-button" type="button">
+                    Læs mere
+                </button>
+
+                <p id="extra-text" class="extra-text hidden">
+                    Dette er en studieside, der er udviklet som et
+                    undervisningsprojekt. Siden demonstrerer forskellige
+                    grundlæggende funktioner i JavaScript.
+                </p>
+            </div>
+        </section>
+
+        <!-- NYHEDSBREV -->
+        <section class="newsletter-section">
+            <div class="newsletter-content">
+                <p class="eyebrow">Anna og Claras nyhedsbrev</p>
+                <h2>Modtag nyheder og inspiration</h2>
+
+                <form id="newsletter-form" class="newsletter-form">
+                    <label for="email">E-mailadresse</label>
+
+                    <div class="form-row">
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Skriv Deres e-mail"
+                            required
+                        >
+
+                        <button type="submit" class="primary-button">
+                            Tilmeld
+                        </button>
+                    </div>
+
+                    <p id="form-message" class="form-message"></p>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- KURV -->
+    <aside id="cart-panel" class="cart-panel hidden">
+        <div class="cart-heading">
+            <h2>Deres kurv</h2>
+
+            <button id="close-cart-button" type="button" aria-label="Luk kurven">
+                ×
+            </button>
+        </div>
+
+        <!-- JavaScript indsætter kurvens varer her -->
+        <div id="cart-items"></div>
+
+        <div class="cart-total">
+            <p>
+                Samlet pris:
+                <strong><span id="cart-total">0,00</span> kr.</strong>
+            </p>
+        </div>
+
+        <button id="clear-cart-button" class="secondary-button" type="button">
+            Tøm kurven
+        </button>
+    </aside>
+
+    <!-- Besked når en vare tilføjes -->
+    <div id="notification" class="notification hidden"></div>
+
+    <footer>
+        <p>
+            Undervisningsprojekt – ikke Søstrene Grenes officielle hjemmeside
+        </p>
+    </footer>
+
+</body>
+</html>
