@@ -211,6 +211,33 @@ function formatCategory(category) {
 }
 
 
+/*
+    ⭐⭐ MARC'S PENSUM-TILFØJELSER TIL PRODUKTFILTRERING ⭐⭐
+*/
+
+// Global scope variabel
+const filterMessage = "Filtrering opdateret";
+
+// Array (ikke-primitive datatype) som kun bruges i filtrerings-feature
+const categoryStats = [
+    { key: "bolig", count: 0 },
+    { key: "koekken", count: 0 },
+    { key: "kreativitet", count: 0 }
+];
+
+// Funktion der demonstrerer local scope
+function demonstrateFilterScope() {
+    const localMessage = "Denne besked findes kun i filtreringsfunktionen"; // Local scope
+    console.log(filterMessage);
+    console.log(localMessage);
+}
+
+
+/*
+    PRODUKTFILTRERING
+*/
+
+
 // Opretter de seks populære kategorier
 function showPopularCategories() {
     popularCategoriesContainer.innerHTML = "";
@@ -333,6 +360,31 @@ function showProducts(category) {
             }
         );
     }
+
+    /*
+        ⭐⭐ PENSUM-TILFØJELSER ⭐⭐
+        Arithmetic operator (+=)
+        Assignment operator (=)
+        Opdatering af objekt/array
+        Variable scope demonstration
+    */
+
+    // Arithmetic operator
+    let filterCounter = 0;
+    filterCounter += 1;
+
+    // Assignment operator
+    let lastFilteredCategory = category;
+
+    // Opdater categoryStats array (objekt-manipulation)
+    const statObject = categoryStats.find(stat => stat.key === category);
+    if (statObject) {
+        statObject.count = visibleProducts.length;
+    }
+
+    // Demonstrér variable scope
+    demonstrateFilterScope();
+
 
     /*
         Kontrolstruktur:
